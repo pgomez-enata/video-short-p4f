@@ -3140,7 +3140,7 @@ colores.
 
 ## Lo que un clon no tiene, y lo dice
 
-- **El detector de rostros del encuadre** es el del sistema GEW (`herramientas-rostro.swift`,
+- **Resuelto el mismo día, ver PASO 7c.** **El detector de rostros del encuadre** era el del sistema GEW (`herramientas-rostro.swift`,
   que compila su `encuadre.py`), y el repo público de GEW no lleva ese fuente. Desde GitHub el
   encuadre va al centro, y la cadena lo dice. Arreglarlo es publicar ese fichero en el repo de
   GEW, o que P4F mida con su propio Vision cuando no lo encuentre: las dos cosas las decide
@@ -3170,3 +3170,33 @@ Lo que NO se comprobó: instalar los paquetes de python en un entorno virgen —
 PyPI lo que esta máquina ya tiene—, ni bajar de nuevo el modelo de whisper y DNSMOS. Se usaron
 los de aquí; los `requirements` salen de lo que el código importa y del entorno de voz que
 funciona.
+
+# PASO 7c · P4F ve las caras con su propio detector (25-sep-2026)
+
+Lo que quedaba abierto en 7b: desde GitHub el encuadre iba al centro, porque el detector de
+rostros era el del sistema GEW y su repo público no trae el fuente. Piero eligió que P4F tenga el
+suyo: `herramientas-rostro.swift`, en la raíz, que `video._detector()` compila la primera vez en
+`_derivados/herramientas/rostro`, igual que el medidor de la portada. El token
+`video.encuadre.detector` apunta a él, y el doctor comprueba que existe: 331 comprobaciones.
+
+**Siempre el suyo, no de respaldo.** Si en el taller siguiera mandando el de GEW y en un clon el
+de P4F, las dos máquinas encuadrarían distinto el día que uno de los dos cambie.
+
+**Es el mismo código, y está medido que ve lo mismo.** Sobre 220 fotogramas de los cuatro clips
+de prueba, con cada cara emparejada con la suya, los dos binarios dan las mismas cajas, los mismos
+ojos y la misma confianza: 0.0 px de diferencia. Lo único distinto es el ORDEN de las caras cuando
+hay varias, y eso Vision lo baraja también entre dos pasadas del MISMO binario (27 de 220
+fotogramas, el de GEW contra sí mismo). El encuadre no depende del orden: la cara principal es la
+de más área. Los informes de encuadre de los cuatro clips salen idénticos antes y después.
+
+⚠️ La primera comparación, línea a línea, daba 25 fotogramas distintos. No era el detector: era
+comparar por posición una lista cuyo orden Vision no garantiza. Se vio al pasar el de GEW dos
+veces contra sí mismo.
+
+**Y desde un clon, que era el hueco.** El clip de WhatsApp desde un clon del paquete, sin GEW al
+lado: cara en 266 de 266 fotogramas, el mismo informe que en el taller. Desde un clon del repo
+publicado por la mañana salía «centrado — el detector de rostros del sistema GEW no está en esta
+máquina».
+
+Del sistema GEW, P4F sigue leyendo, cuando está, el look de color y la zona segura compartida; sin
+él, el respaldo de los tokens, y lo dice.

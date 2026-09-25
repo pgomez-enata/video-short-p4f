@@ -1400,6 +1400,18 @@ def doctor(t):
         else:
             ok += 1
 
+        # 49e. el detector de rostros es el de P4F y está en el repo (Piero, 25-sep-2026).
+        #      Hasta ese día era el del sistema GEW, y una copia de P4F sin GEW al lado
+        #      encuadraba al centro sin que nada lo marcara antes de montar.
+        det_ = (en_ or {}).get("detector", "")
+        if not (isinstance(det_, str) and det_.endswith(".swift")
+                and os.path.exists(os.path.join(RAIZ, det_))):
+            fallos.append(f"video.encuadre.detector es {det_!r}: tiene que ser un fuente .swift de "
+                          f"este repo, y que exista. Sin él la cadena no ve caras y encuadra al "
+                          f"centro")
+        else:
+            ok += 1
+
         # 45. el subtítulo del cuerpo usa una variante y una banda que existen
         sv = vi["subtitulo"]
         if sv["variante"] not in su_["variantes"]:

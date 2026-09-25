@@ -836,22 +836,31 @@ def decidir_ruido(fuente, cadena, tramo=None):
 
 
 def _detector():
-    """La ruta del detector de rostros de Vision, o None si no está.
+    """El detector de rostros de Vision de P4F (`herramientas-rostro.swift`),
+    compilado la primera vez en `_derivados/`, que no viaja. None si no hay
+    `swiftc`.
 
     ⚠️ Detecta CAJAS, no identidades. Sirve para no tapar una cara y para
     colocarla en el lienzo; nunca para agrupar ni identificar a nadie
-    (decisión de Piero, 6-sep-2026). Lo compila `encuadre.py` del sistema GEW
-    la primera vez que se usa allí."""
-    rel = V["encuadre"]["detector"]
-    for base in (os.environ.get("GEW_DIR"),
-                 os.path.join(os.path.dirname(RAIZ), "gew_design_system")):
-        if not base:
-            continue
-        ruta = os.path.join(os.path.dirname(base), rel) if "/" in rel else None
-        cand = os.path.join(base, rel.split("/", 1)[1]) if "/" in rel else ruta
-        if cand and os.path.exists(cand):
-            return cand
-    return None
+    (decisión de Piero, 6-sep-2026).
+
+    Hasta el 25-sep-2026 era el del sistema GEW, que compila su `encuadre.py`:
+    una copia de P4F sin GEW al lado encuadraba al centro. Piero decidió que P4F
+    tenga el suyo, SIEMPRE y no solo de respaldo: dos detectores según la
+    máquina encuadrarían distinto el día que uno cambie. Es el mismo código, y
+    medido sobre 220 fotogramas de los cuatro clips de prueba da las mismas
+    cajas, ojos y confianzas (0.0 px); solo cambia el orden de las caras, que
+    Vision baraja también entre dos pasadas del mismo binario."""
+    fuente = os.path.join(RAIZ, V["encuadre"]["detector"])
+    bin_ = os.path.join(RAIZ, "_derivados", "herramientas", "rostro")
+    if os.path.exists(bin_) and os.path.exists(fuente) and \
+            os.path.getmtime(bin_) >= os.path.getmtime(fuente):
+        return bin_
+    if not (shutil.which("swiftc") and os.path.exists(fuente)):
+        return None
+    os.makedirs(os.path.dirname(bin_), exist_ok=True)
+    r = subprocess.run(["swiftc", "-O", "-o", bin_, fuente], capture_output=True, text=True)
+    return bin_ if r.returncode == 0 else None
 
 
 def caras_lote(pngs, detector, trozo=60):
@@ -983,7 +992,8 @@ def medir_cara(fuente, tramo=None, muestras=None):
     extremos."""
     det = _detector()
     if not det:
-        return None, "el detector de rostros del sistema GEW no está en esta máquina"
+        return None, ("no hay detector de rostros: compilar `herramientas-rostro.swift` "
+                      "necesita `swiftc` (xcode-select --install)")
     e = V["encuadre"]
     t0, t1 = (tramo or [0.0, sonda(fuente)["duracion"]])
     # ⚠️ Muestreo DENSO, no 8 fotogramas. Con 8 el plano elegido cambiaba con el

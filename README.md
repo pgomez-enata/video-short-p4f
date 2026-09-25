@@ -1,6 +1,6 @@
 # Video short · Pitch 4 Fun
 
-[![doctor](https://img.shields.io/badge/doctor-330%20comprobaciones-0595F0)](#comprobarlo)
+[![doctor](https://img.shields.io/badge/doctor-331%20comprobaciones-0595F0)](#comprobarlo)
 [![auditoría](https://img.shields.io/badge/auditor%C3%ADa-0%20bloqueantes-83CE00)](#comprobarlo)
 [![licencia](https://img.shields.io/badge/c%C3%B3digo-MIT-121D30)](LICENCIAS.md)
 
@@ -44,11 +44,11 @@ Lo que decide midiendo, sin que nadie mire:
 
 | | para qué |
 |---|---|
-| **macOS** con las herramientas de Xcode (`xcode-select --install`) | `swiftc` para medir caras con Vision, y `say` para el clip de prueba |
+| **macOS** con las herramientas de Xcode (`xcode-select --install`) | `swiftc` para los dos detectores de caras con Vision —el del encuadre y el de la portada, que se compilan solos la primera vez— y `say` para el clip de prueba |
 | **ffmpeg 8** (`brew install ffmpeg`) | todo el vídeo y el audio |
 | **Un python de voz**, aparte | transcribir con faster-whisper (modelo `small`) y el juez del reductor de ruido |
 | **El modelo DNSMOS** de Microsoft (CC BY 4.0) | el juez del reductor. Sin él el reductor no entra, y la pieza lo dice |
-| **El sistema GEW**, opcional | el detector de rostros del encuadre y el look de color. Si no está junto a este repositorio (o en `GEW_DIR`), el encuadre va al centro y el look sale del respaldo de los tokens, y la cadena lo dice |
+| **El sistema GEW**, opcional | el look de color, que comparten los dos sistemas. Si no está junto a este repositorio (o en `GEW_DIR`), sale del respaldo de los tokens, y la cadena lo dice |
 | **Tu música**, opcional | la cama. Sin ella la pieza sale sin música, y lo avisa |
 
 ### Instalarlo, paso a paso
@@ -188,14 +188,14 @@ taller. Lo que la maqueta enseña es la retícula, que es lo que aporta el siste
 ## Comprobarlo
 
 ```bash
-python3 build.py doctor        # 330 comprobaciones sobre los tokens
+python3 build.py doctor        # 331 comprobaciones sobre los tokens
 python3 auditoria.py           # las piezas contra las reglas del sistema
 python3 auditoria.py probar    # inyecta 17 defectos y comprueba que el auditor los caza
 python3 prepublicar.py --autoprueba   # la puerta de publicación se prueba a sí misma
 python3 video.py pruebas       # la cadena de vídeo, sin vídeo ni detector
 ```
 
-En un clon, sin `audio/` ni el sistema GEW al lado, el doctor pasa **304**: se salta las que dependen de ellos y lo dice en un aviso.
+En un clon, sin `audio/` ni el sistema GEW al lado, el doctor pasa **305**: se salta las que dependen de ellos y lo dice en un aviso.
 
 `prepublicar.py --autoprueba` necesita una foto con una cara para probar que el detector SÍ la
 marca: pásala con `--foto-de-prueba RUTA.jpg`. Sin ella lo deja como no probado y termina con
@@ -221,6 +221,7 @@ auditoria.py     audita las piezas · `probar` inyecta defectos
 prepublicar.py   la puerta antes de publicar · `--autoprueba`
 video.py         la cadena de vídeo · `pieza`, `pruebas`
 historias.py     las cartelas del vídeo y las historias
+herramientas-rostro.swift    el detector de rostros del encuadre (Vision)
 herramientas-portada.swift   el medidor de caras de la portada (Vision)
 guiones/         guiones de ejemplo · nunca transcripciones
 ejemplo/         el clip de prueba y la preparación de tu música
@@ -230,4 +231,4 @@ muestras/        una copia de lo que produce el sistema
 
 ---
 
-Sistema v1.0.0 · 84 ficheros · código MIT, marca no · ver [LICENCIAS.md](LICENCIAS.md)
+Sistema v1.0.0 · 86 ficheros · código MIT, marca no · ver [LICENCIAS.md](LICENCIAS.md)
