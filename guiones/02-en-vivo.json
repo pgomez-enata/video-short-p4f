@@ -1,0 +1,97 @@
+{
+ "nombre": "en-vivo",
+ "_que_es": "DURANTE el evento. Estresa el sistema: nombre largo en el lower-third y subtitulos de dos lineas.",
+ "habla": {
+  "apertura": [
+   "Estamos en vivo desde la tarima.",
+   null
+  ],
+  "titulo": [
+   "Arranca la segunda ronda de pitches de la tarde.",
+   null
+  ],
+  "identificacion": [
+   "El reloj ya esta corriendo y no se detiene por nadie.",
+   null
+  ],
+  "dato": [
+   "Doce proyectos han subido a esta tarima en dos ediciones.",
+   null
+  ],
+  "cita": [
+   "El pitch no termina cuando se apaga el microfono, ahi empieza.",
+   "empieza"
+  ],
+  "sticker": [
+   "Vota por tu favorito en el enlace de aqui abajo.",
+   null
+  ],
+  "cierre": [
+   "Nos vemos en la proxima edicion.",
+   null
+  ]
+ },
+ "apertura": {
+  "titular": [
+   "EN VIVO.",
+   "SEGUNDA RONDA."
+  ]
+ },
+ "identificacion": {
+  "etiqueta": "PANEL EXPERTO",
+  "nombre": null,
+  "detalle": "Cargo y organizacion por confirmar",
+  "rol": "experto"
+ },
+ "dato": {
+  "etiqueta": "PROYECTOS EN TARIMA",
+  "cifra": "proyectos_en_tarima_total",
+  "nota": "Suma de las dos ediciones celebradas"
+ },
+ "cita": {
+  "texto": "El pitch no termina cuando se apaga el microfono.",
+  "autor": null,
+  "nota": "Cargo y organizacion por confirmar"
+ },
+ "sticker": {
+  "titular": [
+   "TU VOTO",
+   "DECIDE."
+  ],
+  "claim": "FEEDBACK REAL. CONEXIONES REALES.",
+  "hueco": "STICKER DE ENLACE · VOTACION"
+ },
+ "cierre": {
+  "titular": [
+   "MENOS SHOW.",
+   "MAS EJECUCION."
+  ],
+  "claim": "IDEAS QUE EJECUTAN."
+ },
+ "video": {
+  "_que_es": "El cuerpo hablado que va ENTRE el título y el end card. `bloques` son los tramos del clip que se usan, con su texto; el troceo en subtítulos lo hace el motor (`python3 video.py bloques`), no se escribe a mano.",
+  "fuente": null,
+  "_fuente": "la ruta del clip. Va vacía hasta que haya uno de verdad: el sistema no inventa material.",
+  "musica": "Open_Window_Theory",
+  "bloques": [
+   {
+    "t0": 0.0,
+    "t1": 6.4,
+    "texto": "Arranca la segunda ronda de pitches y la tarima ya esta llena de gente esperando.",
+    "resalte": "segunda ronda"
+   },
+   {
+    "t0": 6.4,
+    "t1": 12.2,
+    "texto": "Doce proyectos han subido a esta tarima en dos ediciones y ninguno se fue igual.",
+    "resalte": "Doce proyectos"
+   },
+   {
+    "t0": 12.2,
+    "t1": 17.0,
+    "texto": "El pitch no termina cuando se apaga el microfono: ahi es donde empieza.",
+    "resalte": "empieza"
+   }
+  ]
+ }
+}

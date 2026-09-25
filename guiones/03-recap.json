@@ -1,0 +1,23 @@
+{
+ "nombre": "recap",
+ "_que_es": "DESPUES del evento: el resumen. Solo cifras confirmadas, cada una nombrada desde tokens.metricas.",
+ "habla": {
+  "apertura": ["Esto fue Pitch 4 Fun.", null],
+  "titulo": ["Dos ediciones, doce proyectos y una comunidad entera.", null],
+  "identificacion": ["Gracias a quienes subieron a la tarima.", null],
+  "dato": ["Mas de veinte mil personas impactadas.", "veinte"],
+  "cita": ["Las conexiones siguen trabajando despues del pitch.", "conexiones"],
+  "sticker": ["Todo el recap esta en el enlace de aqui abajo.", null],
+  "cierre": ["Nos vemos en la proxima edicion.", null]
+ },
+ "apertura": {"titular": ["ESTO FUE", "PITCH 4 FUN."]},
+ "identificacion": {"etiqueta": "GANA LA EDICION", "nombre": null,
+                    "detalle": "Proyecto y equipo por confirmar", "rol": "pitcher"},
+ "dato": {"etiqueta": "PERSONAS IMPACTADAS", "cifra": "personas_impactadas",
+          "nota": "Cifra confirmada por la organizacion"},
+ "cita": {"texto": "Esto no termina en el escenario.", "autor": null,
+          "nota": "Cargo y organizacion por confirmar"},
+ "sticker": {"titular": ["EL RECAP", "COMPLETO."], "claim": "TU ASK, CLARO Y ACCIONABLE.",
+             "hueco": "STICKER DE ENLACE · RECAP"},
+ "cierre": {"titular": ["MENOS SHOW.", "MAS EJECUCION."], "claim": "IDEAS QUE EJECUTAN."}
+}

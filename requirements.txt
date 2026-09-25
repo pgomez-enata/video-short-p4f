@@ -1,0 +1,15 @@
+# Lo que necesita el sistema con el python de siempre:
+#
+#     python3 -m pip install -r requirements.txt
+#
+# Versiones con las que se comprobó (25-sep-2026), con el Python 3.9 que trae macOS
+# (/usr/bin/python3). Con un Python más nuevo puedes quitar los `==`: son las mínimas probadas,
+# no un límite.
+#
+# La cadena de vídeo usa además un python APARTE para la voz: ver requirements-voz.txt.
+pillow==11.3.0
+reportlab==5.0.0
+svglib==2.2.0
+fonttools==4.60.2
+pypdf==6.14.2
+numpy==2.0.2

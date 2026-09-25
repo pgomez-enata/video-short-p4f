@@ -1,0 +1,14 @@
+# El python de VOZ de la cadena de vídeo, en un entorno aparte:
+#
+#     python3 -m venv ~/.p4f/venv-voz
+#     ~/.p4f/venv-voz/bin/pip install -r requirements-voz.txt
+#     export P4F_PYTHON_VOZ="$HOME/.p4f/venv-voz/bin/python"
+#
+# Va aparte porque faster-whisper arrastra ctranslate2 y onnxruntime, que el resto del sistema no
+# necesita. Sirve para dos cosas: transcribir (faster-whisper) y el juez del reductor de ruido
+# (DNSMOS, con onnxruntime). Versiones con las que se comprobó, el 25-sep-2026, en Python 3.9.
+#
+# ⚠️ La primera transcripción baja el modelo de whisper que diga `tokens.video.transcripcion.modelo`.
+faster-whisper==1.2.1
+onnxruntime==1.19.2
+numpy==2.0.2

@@ -1,0 +1,12 @@
+# Carpetas de trabajo: se regeneran corriendo el sistema.
+_salida/
+_derivados/
+__pycache__/
+*.pyc
+
+# Del sistema operativo
+.DS_Store
+
+# Tu edición concreta. `tokens/edicion.local.json` lleva la fecha, la sede y el enlace de
+# registro de UNA edición: eso es tuyo, no del sistema.
+tokens/edicion.local.json

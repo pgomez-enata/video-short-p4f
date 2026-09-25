@@ -1,0 +1,23 @@
+{
+ "nombre": "convocatoria",
+ "_que_es": "ANTES del evento: invitar a aplicar. Frases cortas, subtitulos de una linea.",
+ "habla": {
+  "apertura": ["Abrimos convocatoria.", null],
+  "titulo": ["Ocho lugares. Tres minutos cada uno.", null],
+  "identificacion": ["Asi funciona el formato.", null],
+  "dato": ["Ya van mas de doscientas candidaturas.", null],
+  "cita": ["Si tienes un MVP, esto es para ti.", "MVP"],
+  "sticker": ["El enlace para aplicar esta aqui abajo.", null],
+  "cierre": ["Te esperamos en la tarima.", null]
+ },
+ "apertura": {"titular": ["APLICA", "CON TU MVP."]},
+ "identificacion": {"etiqueta": "EL FORMATO", "nombre": "8 PROYECTOS",
+                    "detalle": "Tres minutos cada uno, sin excusas", "rol": "pitcher"},
+ "dato": {"etiqueta": "CANDIDATURAS · 2 EDICIONES", "cifra": "candidaturas_totales",
+          "nota": "Cifra confirmada por la organizacion"},
+ "cita": {"texto": "Menos show. Mas ejecucion.", "autor": null,
+          "nota": "El criterio con el que evalua el panel"},
+ "sticker": {"titular": ["APLICA", "ANTES DEL CIERRE."], "claim": "MVP O NADA.",
+             "hueco": "STICKER DE ENLACE · FORMULARIO"},
+ "cierre": {"titular": ["MENOS SHOW.", "MAS EJECUCION."], "claim": "IDEAS QUE EJECUTAN."}
+}

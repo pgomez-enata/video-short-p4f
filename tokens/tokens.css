@@ -1,0 +1,146 @@
+/* GENERADO por build.py desde tokens/tokens.json — NO EDITAR A MANO */
+/* Pitch 4 Fun v1.0.0 — 2026-08-15 */
+
+:root {
+  /* color */
+  --p4f-azul: #0595F0;
+  --p4f-verde: #83CE00;
+  --p4f-ink: #121D30;
+  --p4f-blanco: #FFFFFF;
+  --p4f-ink-2: #182438;
+  --p4f-ink-3: #2B3B57;
+  --p4f-gris-texto: #5A6985;
+  --p4f-gris-borde: #ACB6C7;
+  --p4f-gris-velo: #E1E6F0;
+  --p4f-hueso: #EFF3F9;
+  --p4f-fondo: #000714;
+  --p4f-azul-profundo: #063780;
+  --p4f-claro-rayo: #E6F7FE;
+
+  /* roles */
+  --p4f-rol-fondo-principal: var(--p4f-fondo);
+  --p4f-rol-fondo-claro: var(--p4f-blanco);
+  --p4f-rol-superficie-oscura-2: var(--p4f-azul-profundo);
+  --p4f-rol-superficie-clara-2: var(--p4f-claro-rayo);
+  --p4f-rol-primario: var(--p4f-azul);
+  --p4f-rol-acento: var(--p4f-verde);
+  --p4f-rol-texto-sobre-oscuro: var(--p4f-blanco);
+  --p4f-rol-texto-sobre-claro: var(--p4f-ink);
+  --p4f-rol-texto-secundario-claro: var(--p4f-gris-texto);
+  --p4f-rol-borde: var(--p4f-gris-borde);
+
+  /* tipografia */
+  --p4f-familia: 'Saira', system-ui, sans-serif;
+  --p4f-peso-regular: 400;
+  --p4f-peso-medium: 500;
+  --p4f-peso-semibold: 600;
+  --p4f-peso-bold: 700;
+  --p4f-peso-extrabold: 800;
+  --p4f-peso-black: 900;
+
+  /* escala pt (impresion 8.5x11) */
+  --p4f-pt-micro: 7pt;
+  --p4f-pt-pie: 8.5pt;
+  --p4f-pt-cuerpo: 10pt;
+  --p4f-pt-cuerpo-lg: 12pt;
+  --p4f-pt-h4: 15pt;
+  --p4f-pt-h3: 19pt;
+  --p4f-pt-h2: 24pt;
+  --p4f-pt-h1: 31pt;
+  --p4f-pt-display: 40pt;
+  --p4f-pt-display-xl: 54pt;
+
+  /* escala px (lienzos 1080) */
+  --p4f-px-micro: 20px;
+  --p4f-px-pie: 24px;
+  --p4f-px-cuerpo: 30px;
+  --p4f-px-cuerpo-lg: 36px;
+  --p4f-px-h4: 44px;
+  --p4f-px-h3: 56px;
+  --p4f-px-h2: 70px;
+  --p4f-px-h1: 88px;
+  --p4f-px-display: 112px;
+  --p4f-px-display-xl: 148px;
+
+  /* hoja */
+  --p4f-hoja-ancho: 612pt;
+  --p4f-hoja-alto: 792pt;
+  --p4f-margen-superior: 60pt;
+  --p4f-margen-inferior: 60pt;
+  --p4f-margen-exterior: 54pt;
+  --p4f-margen-interior: 54pt;
+}
+
+/* @font-face — los .ttf viven en fuentes/ */
+@font-face {
+  font-family: 'Saira';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fuentes/Saira-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 400;
+  font-style: italic;
+  src: url('../fuentes/Saira-RegularItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 500;
+  font-style: normal;
+  src: url('../fuentes/Saira-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 500;
+  font-style: italic;
+  src: url('../fuentes/Saira-MediumItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fuentes/Saira-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 600;
+  font-style: italic;
+  src: url('../fuentes/Saira-SemiBoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fuentes/Saira-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fuentes/Saira-BoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 800;
+  font-style: normal;
+  src: url('../fuentes/Saira-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 800;
+  font-style: italic;
+  src: url('../fuentes/Saira-ExtraBoldItalic.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 900;
+  font-style: normal;
+  src: url('../fuentes/Saira-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Saira';
+  font-weight: 900;
+  font-style: italic;
+  src: url('../fuentes/Saira-BlackItalic.ttf') format('truetype');
+}
