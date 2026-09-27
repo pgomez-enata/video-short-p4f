@@ -461,8 +461,9 @@ def limpiar(guion, fuente, sal, base=None):
     # quedaría un extremo al principio de la pieza y el otro en medio. Pasa
     # solo, sin que nadie lo pida, porque un bloque se SOSTIENE hasta medio
     # segundo en la pausa siguiente y esa pausa puede caer ya del otro lado del
-    # corte. Medido: «qué es lo que ustedes dicen» se sostenía 0.27 s más allá
-    # y salía durando 4.92 s con 27.5 caracteres por segundo.
+    # corte. Medido en el clip de WhatsApp: un bloque de seis palabras se
+    # sostenía 0.27 s más allá y salía durando 4.92 s con 27.5 caracteres por
+    # segundo.
     # ⚠️ Los bordes REALES del gancho, no los declarados, y en el tiempo de los
     # bloques (que empieza en el tramo). Al cuadrar a fotograma el final se
     # redondea hacia arriba: en el clip GEW el gancho declarado acababa en 8.94 y
@@ -663,7 +664,8 @@ def dnsmos(fuente, cadenas, tramo=None, python_venv=None):
     dBFS RMS, fuera de lo que el modelo vio al entrenar (−35 a −15)."""
     dn = V["limpieza"]["ruido"]["dnsmos"]
     py = python_venv or os.environ.get("P4F_PYTHON_VOZ")
-    modelo = os.path.expanduser(dn["modelo"])
+    # relativo a la raíz del repo, donde viaja desde el 27-sep-2026; `~` y absolutas, tal cual
+    modelo = os.path.join(RAIZ, os.path.expanduser(dn["modelo"]))
     if not py or not os.path.exists(py):
         return None, "falta P4F_PYTHON_VOZ, el python con onnxruntime (LEEME, paso 6h)"
     if not os.path.exists(modelo):
@@ -3536,9 +3538,9 @@ def pruebas():
              _hms(3661.5) == "01:01:01,500" and _hms(59.9996) == "00:01:00,000")
 
         # partir líneas: parejo, sin colgar preposiciones ni partir la marca
-        pp = partir_parejo("Trae tu proyecto a Pitch 4 Fun el día", len, 32)
-        caso("líneas · «Trae tu proyecto / a Pitch 4 Fun el día»: ni «a» colgando ni la marca "
-             "partida", pp == ["Trae tu proyecto", "a Pitch 4 Fun el día"], str(pp))
+        pp = partir_parejo("Trae tu proyecto a Pitch 4 Fun este año", len, 32)
+        caso("líneas · «Trae tu proyecto / a Pitch 4 Fun este año»: ni «a» colgando ni la marca "
+             "partida", pp == ["Trae tu proyecto", "a Pitch 4 Fun este año"], str(pp))
         pp = partir_parejo("estamos probando el montaje del video nuevo que se va", len, 32)
         nc = set(V["cortes"]["no_cierran_bloque"])
         caso("líneas · ninguna línea acaba en «del», «el», «que» ni «se»",

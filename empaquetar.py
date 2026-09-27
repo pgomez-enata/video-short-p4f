@@ -42,26 +42,18 @@ import sys
 RAIZ = Path(__file__).resolve().parent
 
 NO_VIAJA = {"_derivados", "_salida", "_fuente", "__pycache__", ".git", ".DS_Store",
-            ".pytest_cache", ".ipynb_checkpoints", "organizadores", "marco", "audio",
-            "_trabajo", "_herramientas"}
-# `_herramientas/` lleva lo que la copia privada necesita para replicar el taller en otra
-# máquina: el detector de rostros y el look de color del sistema GEW (suyos, no de este repo) y
-# los modelos DNSMOS de Microsoft. Ninguno se redistribuye aquí.
+            ".pytest_cache", ".ipynb_checkpoints", "_trabajo", "_herramientas"}
+# `_herramientas/` lleva lo que solo necesita la copia privada para replicar el taller en otra
+# máquina: el look de color del sistema GEW (suyo, no de este repo) y `preparar-maquina.sh`.
 # `_trabajo/` guarda las piezas de trabajo: los guiones con sus correcciones y sus
 # transcripciones, que son lo que dice gente real. Va a la copia PRIVADA del taller, nunca a
 # este repo (25-sep-2026).
-# `audio/` son las dos pistas de fondo de Piero y sus versiones normalizadas. No
-# consta su licencia, así que no se redistribuyen. Sus MEDIDAS sí viajan, en
-# `tokens.audio`: un número no es la obra. Estaba declarado en
-# `meta.privado.punteros` desde el principio y el paquete se las llevaba igual —
-# lo cazó comprobar el paquete, no leer el puntero.
-# `logo/marco/` lleva el lockup de la GEW RD, el evento dentro del que ocurre Pitch 4 Fun.
-# El sistema GEW también es nuestro, pero cada marca reparte sus propios activos: igual que
-# `organizadores/`, no viaja.
-# `logo/organizadores/` lleva los wordmarks de Fundación Enlata e IAvanza, copiados de sus
-# propios sistemas de marca. Son marcas con su licencia y su repositorio aparte, y este repo
-# no las redistribuye. Quien clone pone los suyos ahí; sin ellos, `fila_logos` deja el hueco
-# marcado, que es lo que ya hace con el tercer organizador.
+# ⚠️ `audio/`, `logo/organizadores/` y `logo/marco/` VIAJAN desde el 27-sep-2026. Hasta ese día
+# se quedaban fuera: la música porque no constaba su licencia, y los logos de Enlata, IAvanza,
+# Ayudar Me Da Vida y la GEW RD porque cada marca reparte sus activos. Piero decidió subirlos para
+# que el repo replique las piezas completas —dijo que las pistas son suyas o de uso libre— y
+# LICENCIAS.md dice para qué se pueden usar. Los logos de RELLENO de la maqueta siguen fuera
+# (`_derivados/`): son de comunidades reales dentro de una revista inventada.
 # `_fuente` entero se queda fuera por los collages; el PDF del diseñador se copia aparte,
 # porque Piero decidió el 17-ago-2026 que sí viaja (es lo que permite verificar que los 10 SVG
 # salen del original). Se comprueba con el detector de caras como cualquier otra imagen.
@@ -329,6 +321,11 @@ producir sus piezas **correctamente**, no para reutilizarlos en otra cosa.
 marca en marzo de 2026. Va incluido para que cualquiera pueda verificar que los 10 SVG de
 `logo/` salen de él, y se rige por esta misma sección.
 
+`logo/organizadores/` y `logo/marco/` llevan los logos de **Fundación Enlata**, **IAvanza**,
+**Ayudar Me Da Vida** y la **GEW RD**, que organizan Pitch 4 Fun o lo acogen. Son marcas de sus
+organizaciones. Van incluidos para que las cartelas de P4F salgan completas, y se rigen por esta
+misma sección: solo para producir materiales de Pitch 4 Fun.
+
 ## 3 · La tipografía Saira — SIL Open Font License 1.1
 
 `fuentes/` contiene Saira, de Héctor Gatti / Omnibus-Type, bajo **SIL OFL 1.1**. La licencia
@@ -338,19 +335,33 @@ Saira **no es la tipografía de la marca**: la original es Obvia, que es comerci
 distribuye aquí. Saira se eligió midiendo 7 métricas contra Obvia (distancia 0.567, frente a
 1.337 de Poppins y 1.367 de Archivo). El logotipo va en curvas y no necesita ninguna de las dos.
 
+## 4 · La música de `audio/`
+
+Dos pistas para el fondo de los vídeos —`Measured_Intent` y `Open_Window_Theory`— y sus versiones
+de cama y de solo, que saca el propio sistema. Las aportó el equipo de Pitch 4 Fun, con permiso
+para incluirlas en este repositorio (27-sep-2026). Van para producir piezas de Pitch 4 Fun: este
+repositorio no concede ningún otro derecho sobre ellas.
+
+## 5 · DNSMOS — Creative Commons Attribution 4.0
+
+`modelos/dnsmos/sig_bak_ovr.onnx` es **DNSMOS P.835**, de Microsoft (DNS Challenge), sin
+modificar, bajo [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Fuente:
+https://github.com/microsoft/DNS-Challenge (carpeta `DNSMOS/DNSMOS/`). Cita que pide el proyecto:
+Reddy, Gopal y Cutler, DNSMOS P.835, arXiv 2110.01763. El sistema lo usa como juez del reductor de
+ruido y comprueba su sha256 antes de fiarse de él.
+
 ## Lo que este repositorio NO contiene, a propósito
 
 - **Fotografías.** Las de la maqueta eran recortes de dos collages de eventos reales, con 73
   caras de personas a las que nadie pidió permiso. La maqueta se publica regenerada con los
   huecos vacíos (`prototipo.py sin-fotos`).
 - **Datos de contacto**, rutas de máquina o identidad fiscal. Lo comprueba `prepublicar.py`.
-- **Música.** Las pistas con las que se probó son de terceros y no consta su licencia. Sus
-  medidas sí están en `tokens.audio`: un número no es la obra. `ejemplo/preparar-pista.py`
-  prepara la tuya.
+- **Los logos de relleno de la maqueta.** Son de comunidades reales, y la maqueta es una revista
+  con proyectos y cifras inventadas: publicados ahí, parecería que participaron.
 - **Clips y transcripciones.** Son lo que dice gente real. El guion de ejemplo usa un clip que
   fabrica el propio repositorio con la voz del Mac (`ejemplo/clip-de-prueba.sh`).
-- **Modelos.** El de whisper lo baja faster-whisper la primera vez. DNSMOS es de Microsoft
-  (CC BY 4.0) y cada uno lo baja con el comando del README.
+- **El modelo de whisper.** Lo baja faster-whisper la primera vez que transcribe: pesa más de lo
+  que GitHub admite por fichero.
 """
     (destino / "LICENCIAS.md").write_text(licencia, encoding="utf-8")
 
@@ -524,9 +535,9 @@ Lo que decide midiendo, sin que nadie mire:
 | **macOS** con las herramientas de Xcode (`xcode-select --install`) | `swiftc` para los dos detectores de caras con Vision —el del encuadre y el de la portada, que se compilan solos la primera vez— y `say` para el clip de prueba |
 | **ffmpeg 8** (`brew install ffmpeg`) | todo el vídeo y el audio |
 | **Un python de voz**, aparte | transcribir con faster-whisper (modelo `{modelo}`) y el juez del reductor de ruido |
-| **El modelo DNSMOS** de Microsoft (CC BY 4.0) | el juez del reductor. Sin él el reductor no entra, y la pieza lo dice |
+| **El modelo DNSMOS** de Microsoft (CC BY 4.0) | el juez del reductor de ruido. **Viene en el repo** (`modelos/dnsmos/`), y el doctor comprueba que es el medido |
 | **El sistema GEW**, opcional | el look de color, que comparten los dos sistemas. Si no está junto a este repositorio (o en `GEW_DIR`), sale del respaldo de los tokens, y la cadena lo dice |
-| **Tu música**, opcional | la cama. Sin ella la pieza sale sin música, y lo avisa |
+| **La música** | la cama. **Vienen dos pistas** en `audio/`; para usar otra, abajo |
 
 ### Instalarlo, paso a paso
 
@@ -540,18 +551,7 @@ echo 'export P4F_PYTHON_VOZ="$HOME/.p4f/venv-voz/bin/python"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-**2 · El modelo DNSMOS.** Lo pones tú: es de Microsoft y este repositorio no lo redistribuye.
-
-```bash
-mkdir -p ~/.p4f/dnsmos
-curl -L -o ~/.p4f/dnsmos/sig_bak_ovr.onnx https://github.com/microsoft/DNS-Challenge/raw/master/DNSMOS/DNSMOS/sig_bak_ovr.onnx
-shasum -a 256 ~/.p4f/dnsmos/sig_bak_ovr.onnx
-```
-
-La última línea tiene que dar `{sha_dnsmos}`. Si da otra cosa, el juez no mide y el reductor no
-entra.
-
-**3 · Pruébalo** con un clip que fabrica el propio repositorio: la voz del Mac, sin caras ni
+**2 · Pruébalo** con un clip que fabrica el propio repositorio: la voz del Mac, sin caras ni
 material real.
 
 ```bash
@@ -571,24 +571,31 @@ la transcripción oyó mal y pedir una música. ⚠️ **La transcripción no va
 lo que dice gente real. La cadena la deja en la carpeta de la pieza, dentro de `_salida/`, que no
 está en el repositorio.
 
-### Tu música
+### La música
+
+El repo trae dos pistas en `audio/` —`Measured_Intent` y `Open_Window_Theory`— con su versión de
+cama ({cama_lufs} LUFS, la que va debajo de la voz) y la de solo ({solo_lufs} LUFS). Se piden en
+el guion por su nombre, dentro de `video`: `"musica": "Open_Window_Theory"`. El guion de ejemplo
+ya la lleva.
+
+Para usar una tuya:
 
 ```bash
-mkdir -p audio && cp /ruta/a/tu-pista.mp3 audio/Mi_Pista.mp3
+cp /ruta/a/tu-pista.mp3 audio/Mi_Pista.mp3
 python3 ejemplo/preparar-pista.py audio/Mi_Pista.mp3 --escribir
 python3 build.py && python3 build.py doctor
 ```
 
-Saca la versión de cama ({cama_lufs} LUFS, la que va debajo de la voz) y la de solo ({solo_lufs}
-LUFS), en dos pasadas y en estéreo, las mide con el mismo filtro que el doctor y las apunta en
-`tokens.audio.pistas`. Luego se pide en el guion por su nombre: `"musica": "Mi_Pista"`, dentro
-de `video`.
+`preparar-pista.py` saca las dos versiones en dos pasadas y en estéreo, las mide con el mismo
+filtro que el doctor y las apunta en `tokens.audio.pistas`.
 
 ## Estructura
 
 ```
 tokens/          la fuente de verdad · lo único que se edita a mano
-logo/            10 variantes del logotipo, en curvas
+logo/            10 variantes del logotipo, en curvas, y los de los organizadores
+audio/           las dos pistas de fondo, con sus versiones de cama y de solo
+modelos/         DNSMOS, el juez del reductor de ruido (CC BY 4.0)
 iconos/          26 iconos del sistema
 patrones/        el rayo y el mapa
 fuentes/         Saira (SIL OFL 1.1)
@@ -651,7 +658,7 @@ python3 build.py doctor        # ¿los tokens dicen la verdad?
 python3 video.py pruebas       # la cadena de vídeo, sin vídeo ni detector
 ```
 
-Para montar piezas hace falta además el python de voz y el modelo DNSMOS: van abajo, paso a paso.
+Para montar piezas hace falta además el python de voz: va abajo, paso a paso.
 
 ## {secc['El sistema de vídeo']}
 ## El sistema de diseño que lleva dentro

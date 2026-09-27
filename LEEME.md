@@ -3200,3 +3200,47 @@ máquina».
 
 Del sistema GEW, P4F sigue leyendo, cuando está, el look de color y la zona segura compartida; sin
 él, el respaldo de los tokens, y lo dice.
+
+# PASO 7d · El repo público lleva los logos, la música y DNSMOS (27-sep-2026)
+
+Piero: «carga también todos los logos y elementos que hagan falta, música y demás». Viajan desde
+ese día:
+
+| | por qué no viajaba | por qué viaja |
+|---|---|---|
+| `audio/`: las dos pistas y sus versiones de cama y solo, 6 ficheros | no constaba su licencia | Piero dijo que son suyas o de uso libre, y que se suban. LICENCIAS.md dice para qué se pueden usar |
+| `logo/organizadores/` y `logo/marco/`: Enlata, IAvanza, Ayudar Me Da Vida y la GEW RD | cada marca reparte sus activos | decisión de Piero, para que las cartelas salgan completas |
+| `modelos/dnsmos/sig_bak_ovr.onnx` | es de Microsoft | CC BY 4.0 permite redistribuirlo citando la fuente: el crédito va en LICENCIAS.md y en `modelos/dnsmos/LEEME.md` |
+
+Lo que sigue fuera, y por qué:
+
+- **Las fotos de relleno** (caras de gente a la que nadie preguntó) y **los logos de relleno de
+  la maqueta**: comunidades reales dentro de una revista inventada (Piero, 27-sep).
+- **El modelo de whisper**: 486 MB, más de lo que GitHub admite por fichero. Lo baja
+  faster-whisper la primera vez.
+- **Obvia**, la tipografía de marca, que es comercial.
+- **El look de GEW**: no hace falta. El respaldo de los tokens es idéntico al suyo, comparado
+  cadena a cadena.
+
+## ⚠️ El «0 después» del PASO 7b era falso
+
+El escáner de transcripciones de 7b paraba en el PRIMER grupo de cuatro palabras de cada línea
+que coincidía con una transcripción, y los genéricos («que es lo que») se quitaban a mano del
+informe. En una línea de `video.py` el primer grupo era genérico y tapaba el resto: una frase de
+seis palabras del clip de WhatsApp, citada en un comentario. Llegó al repo público en sus dos
+primeros commits (`d294b6e` y `d8a2190`), y en su historial sigue.
+
+Lo cazó la segunda versión del escáner, que mide por línea el TRAMO MÁS LARGO de palabras
+seguidas que aparece en alguna transcripción y marca desde cinco, sin quitar nada a mano. Encontró
+dos cosas: esa frase, y la de la prueba de partir líneas que se había inventado en 7b, que
+compartía seis palabras con el mismo clip: la marca y lo que la sigue. Las dos, reescritas; con las
+ocho transcripciones de la sesión, 0 tramos de cinco o más.
+
+Y una trampa más, de las que ya estaban escritas: la primera pasada de la versión 2 devolvió «0
+líneas» porque zsh no partió la lista de transcripciones y el diccionario salió vacío. Un cero con
+el diccionario vacío no es un cero.
+
+DNSMOS vive ahora en el repo, y el token apunta ahí (`modelos/dnsmos/sig_bak_ovr.onnx`, relativo
+a la raíz). El doctor comprueba que está y que su sha256 es el medido —tres valores malos a
+propósito, tres cazados—, y el README pierde el paso de bajarlo. El guion de ejemplo lleva ahora
+música.

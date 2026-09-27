@@ -225,6 +225,16 @@ def _elementos_de_historias():
         return {}
 
 
+def _sha256_de(ruta):
+    """El sha256 de un fichero, o None si no está."""
+    import hashlib
+    try:
+        with open(ruta, "rb") as f:
+            return hashlib.sha256(f.read()).hexdigest()
+    except OSError:
+        return None
+
+
 def _looks_gew():
     """Los looks de color que declara el sistema GEW, o None si no está."""
     aqui = os.path.dirname(RAIZ)
@@ -1333,6 +1343,13 @@ def doctor(t):
             elif not re.fullmatch(r"[0-9a-f]{64}", str(dn.get("sha256", ""))):
                 fallos.append("video.limpieza.ruido.dnsmos.sha256 no es un sha256. Sin él no se "
                               "sabe si el modelo que puntúa es el que se midió")
+            elif _sha256_de(os.path.join(RAIZ, os.path.expanduser(str(dn.get("modelo", ""))))) \
+                    != dn["sha256"]:
+                # desde el 27-sep-2026 el modelo viaja en el repo: se puede comprobar que está y
+                # que es el medido, en vez de fiarse de lo que haya en la máquina
+                fallos.append(f"video.limpieza.ruido.dnsmos.modelo ({dn.get('modelo')}) no está o "
+                              f"no es el medido: su sha256 no coincide. Sin él el reductor no "
+                              f"entra nunca")
             elif not -35 <= dn.get("nivel_dbfs", 0) <= -15:
                 fallos.append(f"video.limpieza.ruido.dnsmos.nivel_dbfs es {dn.get('nivel_dbfs')}: "
                               f"fuera de lo que DNSMOS vio al entrenar (−35 a −15 dBFS) la nota "

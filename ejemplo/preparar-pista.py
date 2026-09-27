@@ -6,8 +6,8 @@ preparar-pista.py — prepara una pista de música TUYA para la cadena de vídeo
     python3 ejemplo/preparar-pista.py audio/Mi_Pista.mp3              # saca, mide e imprime
     python3 ejemplo/preparar-pista.py audio/Mi_Pista.mp3 --escribir   # y la apunta en los tokens
 
-El repositorio no trae música: las pistas con las que se probó son de terceros y no consta su
-licencia. Esto hace con la tuya lo mismo que se hizo con aquellas:
+El repositorio trae dos pistas en `audio/`. Esto hace con una tuya lo mismo que se hizo con
+aquellas:
 
     audio/Mi_Pista-cama.m4a   la que va DEBAJO de la voz    (`tokens.audio.objetivo_cama`)
     audio/Mi_Pista-solo.m4a   la que va cuando suena sola   (`tokens.audio.objetivo_solo`)

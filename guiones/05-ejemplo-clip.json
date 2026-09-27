@@ -1,6 +1,6 @@
 {
  "nombre": "ejemplo-clip",
- "_que_es": "Ejemplo para comprobar la cadena de vídeo en una máquina nueva, sin material real. El clip lo fabrica `sh ejemplo/clip-de-prueba.sh` con la voz del Mac sobre una carta de ajuste: no hay rostro, así que el encuadre va al centro. Para una pieza de verdad, copia este guion, cambia `nombre` y pon tu clip en `video.fuente`. Opcionales: `video.tramo` [inicio, fin] en segundos, `video.correcciones` {\"palabra oída\": \"palabra buena\"} y `video.musica` con el nombre de una pista de `tokens.audio.pistas` (ver `ejemplo/preparar-pista.py`). ⚠️ La transcripción no va nunca aquí: es lo que dice gente real, y la cadena la deja en la carpeta de la pieza, dentro de `_salida/`.",
+ "_que_es": "Ejemplo para comprobar la cadena de vídeo en una máquina nueva, sin material real. El clip lo fabrica `sh ejemplo/clip-de-prueba.sh` con la voz del Mac sobre una carta de ajuste: no hay rostro, así que el encuadre va al centro. Para una pieza de verdad, copia este guion, cambia `nombre` y pon tu clip en `video.fuente`. Opcionales: `video.tramo` [inicio, fin] en segundos, `video.correcciones` {\"palabra oída\": \"palabra buena\"} y `video.musica`, el nombre de una pista de `tokens.audio.pistas`: aquí va una de las dos que trae el repo, y `ejemplo/preparar-pista.py` prepara otra tuya. ⚠️ La transcripción no va nunca aquí: es lo que dice gente real, y la cadena la deja en la carpeta de la pieza, dentro de `_salida/`.",
  "habla": {
   "apertura": ["Esto es una prueba.", null],
   "titulo": ["Prueba de la cadena de vídeo.", null],
@@ -11,6 +11,7 @@
   "cierre": ["Te esperamos en la tarima.", null]
  },
  "video": {
-  "fuente": "_salida/ejemplo/clip-de-prueba.mp4"
+  "fuente": "_salida/ejemplo/clip-de-prueba.mp4",
+  "musica": "Open_Window_Theory"
  }
 }
